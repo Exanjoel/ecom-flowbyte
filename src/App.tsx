@@ -6,21 +6,35 @@ import Mainfooter from './footer'
 import Product from './productpaage'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from './login'
+import Cart from './addcart'
+import Category from './category/category'
 
 function App() {
  
   const router = createBrowserRouter([
     {
-      path: "product",
+      path:'',
+      element:<Home/>
+    },
+    {
+      path: "product/:id",
       element: <Product />,
     },
     {
-      path:"home",
+      path:"/home",
       element:<Home/>
     },
     {
       path:"login",
       element: <Login/>
+    },
+    {
+      path:"/cart",
+      element: <Cart/>
+    },
+    {
+      path:"/category/:index",
+      element:<Category/>
     }
   ]);
 
