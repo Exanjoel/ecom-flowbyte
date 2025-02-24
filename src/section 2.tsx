@@ -22,39 +22,44 @@ const customTheme: CustomFlowbiteTheme = {
   },
 };
 export default function Section2() {
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState([]) as any ;
   useEffect(() => {
     axios
-      .get("https://fakestoreapi.com/products/categories")
+      .get("http://localhost:3000/category")
       .then((response) => {
-        let detail = response.data;
+        console.log(response)
+        let detail = response.data.results;
         setCategory(detail);
         
       });
   }, []);
+  
 
-  const categoryList = [
-    {
-      title: "shirts",
-      imgUrl: "shirt.webp",
-      itemCount: 12,
-    },
-    {
-      title: "shoes",
-      imgUrl: "shoe.webp",
-      itemCount: 12,
-    },
-    {
-      title: "bags",
-      imgUrl: "bagg.webp",
-      itemCount: 12,
-    },
-    {
-      title: "glasses",
-      imgUrl: "glasses.webp",
-      itemCount: 12,
-    },
-  ];
+
+ 
+
+  // const categoryList = [
+  //   {
+  //     title: "shirts",
+  //     imgUrl: "bagg.webp",
+  //     itemCount: 12,
+  //   },
+  //   {
+  //     title: "shoes",
+  //     imgUrl: "shoe.webp",
+  //     itemCount: 12,
+  //   },
+  //   {
+  //     title: "bags",
+  //     imgUrl: "shirt.webp",
+  //     itemCount: 12,
+  //   },
+  //   {
+  //     title: "glasses",
+  //     imgUrl: "glasses.webp",
+  //     itemCount: 12,
+  //   },
+  // ];
 
 
   return (
@@ -69,17 +74,17 @@ export default function Section2() {
         </div>
       </div>
       <div className="block flex flex-wrap ">
-        {categoryList.map((item, index) => (
+        {category.map((item:any) => (
           <Card
             theme={customTheme}
             className="lg:w-1/4  w-1/2 rounded-none relative"
           >
-            <img src={item.imgUrl} />
+            <img src={item.image} />
             <div className="absolute left-3 top-10">
             
-               <a href={`/category/${category[index]}`}> <h5 className="font-bold uppercase text-2xl ">{category[index]}</h5></a> 
+               <a href={`/category/${item.category_id}`}> <h5 className="font-bold uppercase text-2xl ">{item.category_name}</h5></a> 
            
-              <p>{item.itemCount} items</p>
+              <p>{item.category_id} items</p>
             </div>
           </Card>
         ))}

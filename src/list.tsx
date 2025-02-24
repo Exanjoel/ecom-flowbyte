@@ -7,40 +7,23 @@ import axios from "axios";
 
 export default function List() {
  const [cardproduct, setCardproducts] = useState([]);
-//  const products = [
-//     { imageUrl: "watemelon.webp", title: "fresh fruit1", price: "$2000" },
-//     { imageUrl: "watemelon.webp", title: "watermelon", price: "$1500" },
-//     { imageUrl: "watemelon.webp", title: "jack fruit", price: "$10000" },
-//     { imageUrl: "watemelon.webp", title: "strawberry", price: "$2000" },
-//     { imageUrl: "watemelon.webp", title: "fresh fruit2", price: "$2000" },
-//     { imageUrl: "watemelon.webp", title: "fresh fruit2", price: "$2000" },
-//     { imageUrl: "watemelon.webp", title: "fresh fruit2", price: "$2000" },
-//     { imageUrl: "watemelon.webp", title: "fresh fruit2", price: "$2000" },
-//     { imageUrl: "watemelon.webp", title: "fresh fruit2", price: "$2000" },
 
     
   
 
   
-//   ];
 useEffect(()=>{
-    axios.get("https://fakestoreapi.com/products").then((response) => {
-      let Allproducts=response.data
+    axios.get("http://localhost:3000/product").then((response) => {
+      let Allproducts=response.data.results
       setCardproducts(Allproducts);
+      
     });
   },[]);
-  
+
 
   return (
     <>
-      {/* <Carousel
-        onSlideChange={(index) => console.log("onSlideChange()", index)}
-        className="flex"
-      >
-        {products.map((product) => (
-          <ProductCard cardDetails={product} />
-        ))}
-      </Carousel> */}
+     
 
       <Carousel
         additionalTransfrom={0}

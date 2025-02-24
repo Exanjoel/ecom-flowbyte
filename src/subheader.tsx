@@ -10,15 +10,15 @@ export function Subheader() {
     
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Navbar.Link href="/home" active>
+        <Navbar.Link active href="/home">
           Home
         </Navbar.Link>
         <Navbar.Link  href="#">
           About
         </Navbar.Link>
-        <Navbar.Link href="#">Pricing</Navbar.Link>
+        <Navbar.Link  href="#">Pricing</Navbar.Link>
         <Navbar.Link href="#">Contact</Navbar.Link>
-        <Navbar.Link href="./login">Login</Navbar.Link>
+        <Navbar.Link active href="./login">Login</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
       </>

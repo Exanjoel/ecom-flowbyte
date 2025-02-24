@@ -35,7 +35,7 @@ export default function ProductCard(props: any) {
        
       
         <div   className=" h-60  overflow-hidden">
-        <a  href={`product/${cardDetails.id}`}>
+        <a  href={`product/${cardDetails.product_id}`}>
         <img  className="p-2" src={cardDetails.image} />
         </a>
         </div>

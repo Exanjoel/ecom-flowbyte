@@ -2,6 +2,8 @@ import axios from "axios";
 import { Card } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+
 export default function Category() {
   // const categorylist = [
   //   {
@@ -22,26 +24,28 @@ export default function Category() {
 
   // ];
   const [Category, setCategory] = useState([]);
-  let { index } = useParams();
-  useEffect 
-    (() => {
-      axios
-        .get(`https://fakestoreapi.com/products/category/${index}`)
-        .then((response) => {
-          let items = response.data;
-          setCategory(items);
-        });
-    },
-    []);
+  let { categoryId } = useParams();
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/category/${categoryId}`)
+      .then((response) => {
+        let items = response.data.results;
+
+        setCategory(items);
+      });
+  }, []);
 
   return (
     <>
       <div className="flex flex-wrap justify-center gap-2 p-2 ">
         {Category.map((item: any) => (
           <Card className="max-w-sm lg:w-1/4">
-            <div className="h-60 overflow-hidden">
-              <img className="" src={item.image} />
-            </div>
+            <a href={`/product/${item.product_id}`}>
+              <div className="h-60 overflow-hidden">
+                <img className="" src={item.image} />
+              </div>
+            </a>
+
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize">
               {item.title}
             </h5>

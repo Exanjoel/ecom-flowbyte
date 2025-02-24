@@ -17,15 +17,16 @@ function App() {
       element:<Home/>
     },
     {
-      path: "product/:id",
+      path: "product/:productId",
       element: <Product />,
     },
+   
     {
       path:"/home",
       element:<Home/>
     },
     {
-      path:"login",
+      path:"/login",
       element: <Login/>
     },
     {
@@ -33,7 +34,7 @@ function App() {
       element: <Cart/>
     },
     {
-      path:"/category/:index",
+      path:"/category/:categoryId",
       element:<Category/>
     }
   ]);
@@ -49,11 +50,6 @@ function App() {
       <Subheader/>
      </div>
      <RouterProvider router={router} />
-  
-     
-
-
-
      <Mainfooter/>
  
     </>

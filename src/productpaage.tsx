@@ -4,16 +4,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Product() {
-  let { id } = useParams();
-  const [product, setProduct] = useState([]);
+  let { productId } = useParams();
+  const [product, setProduct] = useState([]) as any;
   useEffect(() => {
-    axios.get(`https://fakestoreapi.com/products/${id}`).then((response) => {
-      let detail = response.data;
+    axios.get(`http://localhost:3000/product/${productId}`).then((response) => {
+      let detail = response.data.results;
+     
       setProduct(detail);
-      console.log(response);
+      
     });
   }, []);
-
+  
   return (
     <>
       <div className="flex items-center flex-col lg:flex-row justify-around">
@@ -55,7 +56,7 @@ export default function Product() {
               <h5 className="font-bold">
                 count:
                 <span className=" ml-2 font-thin">
-                  {product?.rating?.count}
+                  {product.count}
                 </span>
               </h5>
             </div>
@@ -78,17 +79,17 @@ export default function Product() {
             <h4 className="font-semibold">
               Delivery:
               <span className="text-slate-500 m-5">
-                estimated delivery time 2-5 days
+                {product.delivery}
               </span>
             </h4>
             <h4 className="font-semibold">
               Returns:
               <span className="text-slate-500 m-5">
-                within 45 days of order
+                {product.returns}
               </span>
             </h4>
             <h4 className="font-semibold">
-              Sku:<span className="text-slate-500 m-5">445</span>
+              Sku:<span className="text-slate-500 m-5">{product.sku}</span>
             </h4>
           </div>
         </div>
